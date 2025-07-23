@@ -11,8 +11,3 @@ headless = true
 port = 8501
 enableCORS = false
 
-
-[postinstall]
-commands = [
-  "python -m spacy download en_core_web_sm"
-]

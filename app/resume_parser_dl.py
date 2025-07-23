@@ -3,8 +3,13 @@ import fitz  # PyMuPDF
 import re
 import json
 
-import spacy
-nlp = spacy.load("models/en_core_web_sm")
+from spacy.util import load_model_from_path
+import pathlib
+
+# Load from local folder
+nlp = load_model_from_path(pathlib.Path("en_core_web_sm"))
+
+
 
 from sentence_transformers import SentenceTransformer, util
 import logging
