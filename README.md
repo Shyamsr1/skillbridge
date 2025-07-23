@@ -17,11 +17,6 @@ pip install -r requirements.txt
 streamlit run skillbridge_dl_app.py
 ```
 
-## 🧪 Run Tests
-```bash
-cd tests
-python test.py
-```
 
 ## 🌐 Streamlit Cloud Setup
 1. Upload this repo to GitHub
@@ -31,13 +26,14 @@ python test.py
 ## 📁 Project Structure
 ```
 .
-├── app/
-├── data/
-├── tests/
+├── .streamlit
+├── app
+├── data
 ├── skillbridge_dl_app.py
 ├── requirements.txt
+├── secrets.toml
 └── README.md
 ```
 
 ## 📄 License
-MIT License – © SkillBridge Team
+License – © SkillBridge Team
