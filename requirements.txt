@@ -1,0 +1,15 @@
+streamlit
+spacy
+pandas
+mysql-connector-python
+langdetect
+deep-translator
+reportlab
+PyMuPDF
+transformers
+sentence-transformers
+torch
+plotly
+keybert
+scikit-learn
+textwrap
