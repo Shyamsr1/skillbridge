@@ -2,13 +2,10 @@
 import fitz  # PyMuPDF
 import re
 import json
+
 import spacy
-try:
-    nlp = spacy.load("en_core_web_sm")
-except OSError:
-    from spacy.cli import download
-    download("en_core_web_sm")
-    nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("models/en_core_web_sm")
+
 from sentence_transformers import SentenceTransformer, util
 import logging
 logging.getLogger("transformers").setLevel(logging.ERROR) #Suppress transformers warnings 
