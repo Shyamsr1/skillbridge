@@ -34,10 +34,10 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 
 kw_model = KeyBERT()
 
-ner_pipe = pipeline("ner", model="Davlan/xlm-roberta-base-ner-hrl", grouped_entities=True)
+# ner_pipe = pipeline("ner", model="Davlan/xlm-roberta-base-ner-hrl", grouped_entities=True)
+ner_pipe = pipeline("ner", model="dslim/bert-base-NER", grouped_entities=True)
 
 summarizer = pipeline("summarization")
-
 
 
 # --- Basic Text Extraction ---
