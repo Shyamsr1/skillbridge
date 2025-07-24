@@ -1,9 +1,11 @@
 
+from click import Path
 import fitz  # PyMuPDF
 import re
 import json
 
 import pathlib
+from pathlib import Path
 import spacy
 # from spacy.util import load_model_from_path
 # # Load from local folder
@@ -21,8 +23,7 @@ if not os.path.exists(UNZIP_DIR):
     with zipfile.ZipFile(MODEL_ZIP, 'r') as zip_ref:
         zip_ref.extractall(UNZIP_DIR)
 
-nlp = load_model_from_path(UNZIP_DIR)
-
+nlp = load_model_from_path(Path(UNZIP_DIR))
 
 
 
