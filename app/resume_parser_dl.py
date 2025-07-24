@@ -5,11 +5,24 @@ import json
 
 import pathlib
 import spacy
+# from spacy.util import load_model_from_path
+# # Load from local folder
+# nlp = load_model_from_path(pathlib.Path("en_core_web_sm"))
+
+import os
+import zipfile
 from spacy.util import load_model_from_path
 
+MODEL_ZIP = "en_core_web_sm.zip"
+UNZIP_DIR = "unpacked_model"
 
-# Load from local folder
-nlp = load_model_from_path(pathlib.Path("en_core_web_sm"))
+# Unzip once (Streamlit restarts trigger re-runs, but not always file deletions)
+if not os.path.exists(UNZIP_DIR):
+    with zipfile.ZipFile(MODEL_ZIP, 'r') as zip_ref:
+        zip_ref.extractall(UNZIP_DIR)
+
+nlp = load_model_from_path(UNZIP_DIR)
+
 
 
 
