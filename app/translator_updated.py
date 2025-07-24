@@ -1,12 +1,9 @@
 import json
-
-# Updated multilingual translator using deep-translator and Hugging Face transformers
-
 from deep_translator import GoogleTranslator
 import logging
-logging.getLogger("transformers").setLevel(logging.ERROR)# Suppress transformers warnings
+logging.getLogger("transformers").setLevel(logging.ERROR)
 
-from transformers import MarianMTModel, MarianTokenizer
+from transformers import pipeline
 
 # UI dictionary remains available
 translations = {
@@ -24,16 +21,12 @@ def translate_text(text, target_lang="fr", source_lang="auto"):
     except Exception as e:
         return f"[Translation Error]: {e}"
 
-# --- Deep Learning-based Translation using MarianMT ---
+# --- DL-based Translation using HuggingFace pipeline ---
 def translate_text_dl(text, source_lang="en", target_lang="fr"):
     try:
         model_name = f"Helsinki-NLP/opus-mt-{source_lang}-{target_lang}"
-        tokenizer = MarianTokenizer.from_pretrained(model_name)
-        model = MarianMTModel.from_pretrained(model_name)
-
-        tokenized = tokenizer(text, return_tensors="pt", padding=True, truncation=True)
-        translated = model.generate(**tokenized)
-        output = tokenizer.decode(translated[0], skip_special_tokens=True)
+        translator = pipeline("translation", model=model_name)
+        output = translator(text, max_length=400)[0]["translation_text"]
         return output
     except Exception as e:
         return f"[DL Translation Error]: {e}"
