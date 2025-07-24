@@ -3,8 +3,10 @@ import fitz  # PyMuPDF
 import re
 import json
 
-from spacy.util import load_model_from_path
 import pathlib
+import spacy
+from spacy.util import load_model_from_path
+
 
 # Load from local folder
 nlp = load_model_from_path(pathlib.Path("en_core_web_sm"))
